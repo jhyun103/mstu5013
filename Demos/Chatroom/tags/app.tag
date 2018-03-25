@@ -15,22 +15,38 @@
 
 		// Demonstration Data
 		this.chatLog = [
-			{ message: "Hello" }, { message: "Hola" }, { message: "Konnichiwa" }
+			//{ message: "안녕" }, { message: "Hola" }, { message: "Konnichiwa" }
 		];
+		
+		messageRef.on('value', function(snapshot){
+			var data = snapshot.val();
+			
+			that.chatLog = [];
+			
+			for (key in data)
+	{
+		that.chatLog.push(data[key]);
+}			
+			})
 
 		sendMsg(e) {
 			if (e.type == "keypress" && e.key !== "Enter") {
 				e.preventUpdate = true; // Prevents riot from auto update.
 				return false; // Short-circuits function (function exits here, does not continue.)
 			}
-
+			
+			if(this.refs.messageInput.value !==""){
+		
 			var msg = {
 				message: this.refs.messageInput.value
 			};
-			this.chatLog.push(msg);
+			
+			messageRef.push(msg);
+			//this.chatLog.push(msg);
 
 			this.clearInput();
 		}
+	}
 
 		clearInput(e) {
 			this.refs.messageInput.value = "";

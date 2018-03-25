@@ -29,6 +29,10 @@
 	  };
 	  firebase.initializeApp(config);
 
+		var database = firebase.database();
+		var messageRef = database.ref('/messages');
+
+
 		// Global Cached -> Most useful Firebase refs accessible anywhere.
 		// HERE
 

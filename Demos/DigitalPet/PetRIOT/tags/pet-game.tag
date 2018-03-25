@@ -31,6 +31,8 @@
 		const CATSTRENGTH = 3;
 
 		this.inPlay = true;
+		
+
 
 		this.petHealth = 80;
 		this.petStrength = 0;
